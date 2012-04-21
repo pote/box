@@ -7,7 +7,7 @@ Let me know if I should punch myself repeatedly in the face for this.
 
 ## What is it?
 
-Box is an extremely simple 'inline filesystem' for your ruby scripts, inspired by sinatra and their way of handling simple file templates on its own source file. Allowme to demonstrate:
+Box is an extremely simple "inline filesystem" for your ruby scripts, inspired by sinatra and their way of handling simple file templates on its own source file. Allow me to demonstrate:
 
 ```ruby
 require 'box'
