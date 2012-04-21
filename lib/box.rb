@@ -1,5 +1,5 @@
 module Box
-  class Files
+  class File
     def self.load
       files = {}
 
@@ -18,5 +18,5 @@ module Box
     end
   end
 
-  FILES = Box::Files.load
+  FILES = Box::File.load
 end
