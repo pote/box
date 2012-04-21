@@ -19,18 +19,18 @@ Box::FILES.class
 
 Box::FILES.keys
 #=> header.md
-#=> author.html
-#=> planet.yml
+#   author.html
+#   planet.yml
 
 Box::FILES['author.html'].to_s
 #=> "
-<div class=\"author\">
-  <img src=\"{{ image_url }}\" style=\"width: 96px; height: 96;\">
-  <span style=\"position: absolute; padding: 32px 15px;\">
-    <i>Original post by <a href=\"{{ twitter_url }}\">{{ author }}</a> - check out <a href=\"{{ blog_url }}\">{{ blog_name }}</a></i>
-  </span>
-</div>
-"
+#<div class=\"author\">
+#  <img src=\"{{ image_url }}\" style=\"width: 96px; height: 96;\">
+#  <span style=\"position: absolute; padding: 32px 15px;\">
+#    <i>Original post by <a href=\"{{ twitter_url }}\">{{ author }}</a> - check out <a href=\"{{ blog_url }}\">{{ blog_name }}</a></i>
+#  </span>
+#</div>
+#"
 
 __END__
 @@ header.md
