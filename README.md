@@ -24,10 +24,10 @@ Box::FILES.keys
 
 Box::FILES['author.html'].to_s
 #=> "
-#<div class=\"author\">
-#  <img src=\"{{ image_url }}\" style=\"width: 96px; height: 96;\">
-#  <span style=\"position: absolute; padding: 32px 15px;\">
-#    <i>Original post by <a href=\"{{ twitter_url }}\">{{ author }}</a> - check out <a href=\"{{ blog_url }}\">{{ blog_name }}</a></i>
+#<div class="author">
+#  <img src="{{ image_url }}" style="width: 96px; height: 96;">
+#  <span style="position: absolute; padding: 32px 15px;">
+#    <i>Original post by <a href="{{ twitter_url }}">{{ author }}</a> - check out <a href="{{ blog_url }}">{{ blog_name }}</a></i>
 #  </span>
 #</div>
 #"
