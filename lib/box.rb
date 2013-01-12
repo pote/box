@@ -1,22 +1,28 @@
 module Box
   class File
-    def self.load
-      files = {}
+    def self.caller_files(keep = 3)
+      caller(1).map { |line| line.split(/:(?=\d|in )/, 3)[0,1] }.flatten
+    end
 
-      if defined?(DATA)
-        DATA.read.split(/^@@ /).each do |chunk|
-          if chunk != ""
-            file_name = chunk.match(/(\A\w+.\w+)/)[0]
-            file_content = chunk.split(/\A\w+.\w+\n/)[1]
+    def self.inline_templates
+      file = caller_files.last
 
-            files[file_name] = file_content
-          end
-        end
+      begin
+        io = ::IO.respond_to?(:binread) ? ::IO.binread(file) : ::IO.read(file)
+        app, data = io.gsub("\r\n", "\n").split(/^__END__$/, 2)
+      rescue Errno::ENOENT
+        app, data = nil
       end
 
-      files
+      if data
+        file_names = data.scan(/^@@\s*(\S*)\s*$/).flatten
+        file_contents = data.split(/\n^@@.*$\n/)
+        file_contents.shift
+      end
+
+      Hash[file_names.zip(file_contents)]
     end
   end
 
-  FILES = Box::File.load
+  FILES = Box::File.inline_templates
 end
