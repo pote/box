@@ -1,8 +1,10 @@
 # Box - Because you don't always need a filesystem.
 
-Howdy, fellow ruby programmer! I am going to start this README file by apologizing deeply for what you are about to witness, it's been a long day, I've worked for far too many hours, and I thought it would be fun to write it.
+Howdy, fellow ruby programmer! I want to make a quick disclosure about this gem: while I don't really like to use this term there is no better way to describe it than "a ridiculous hack", I really like the way sinatra handles inline templates and I've always thought we should be able to have that functionality extracted so we could use it anywhere, this gem is my stab at that particular problem.
 
-Let me know if I should punch myself repeatedly in the face for this.
+Some of the code here is taken directly from sinatra, I've tried to make it as simple and brief as possible but due to its hackish nature you might run into unexpected problems with it, I've found it to work on my use cases (including gems, where previous versions of Box did not work as it used to read from the DATA constant) and I really want to make this piece of software robust and usable by anybody, so please open issues on any problems you encounter using it.
+
+Right then! Let's dive in!
 
 
 ## What is it?
@@ -12,8 +14,6 @@ Box is an extremely simple "inline filesystem" for your ruby scripts, inspired b
 ```ruby
 require 'box'
 
-include Box
-
 Box::FILES.class
 #=> Hash
 
@@ -22,7 +22,7 @@ Box::FILES.keys
 #   author.html
 #   planet.yml
 
-Box::FILES['author.html'].to_s
+Box::FILES['author.html']
 #=> "
 #<div class="author">
 #  <img src="{{ image_url }}" style="width: 96px; height: 96;">
